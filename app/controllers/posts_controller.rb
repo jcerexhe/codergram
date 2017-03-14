@@ -1,6 +1,11 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
+  def toggle_follow
+    current_user.toggle_follow!(User.find(params[:user_id]))
+    redirect_to :back
+  end
+
   # GET /posts
   # GET /posts.json
   def index
@@ -10,6 +15,7 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
+    @number = "12"
   end
 
   # GET /posts/new
@@ -25,6 +31,7 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(post_params)
+    @post.user_id = current_user.id
 
     respond_to do |format|
       if @post.save
@@ -69,6 +76,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:description, :user_id)
+      params.require(:post).permit(:description, :user_id, :post_image, :post_image_cache)
     end
 end

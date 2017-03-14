@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  resources :posts
+  resources :posts do
+    member do
+      get 'toggle_follow', to: 'posts#toggle_follow'
+    end
+  end
+
   devise_for :users
   devise_for :installs
   root 'pages#feed'
