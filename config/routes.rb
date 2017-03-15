@@ -2,8 +2,11 @@ Rails.application.routes.draw do
   resources :posts do
     member do
       get 'toggle_follow', to: 'posts#toggle_follow'
+      get 'toggle_like', to: 'posts#toggle_like'
     end
   end
+
+  get 'toggle_follow', to: 'posts#toggle_follow'
 
   devise_for :users
   devise_for :installs

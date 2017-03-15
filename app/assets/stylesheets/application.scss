@@ -18,3 +18,14 @@
  $primary-color: color("purple", "darken-3") !default;
  $secondary-color: color("yellow", "base") !default;
  @import "materialize";
+
+
+ .Follow {
+   color: green;
+   font-size: 30px;
+ }
+
+ .Unfollow {
+   color: red;
+   font-size: 30px;
+ }
